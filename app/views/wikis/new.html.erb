@@ -1,0 +1,15 @@
+<div class="wiki_create">
+ <%= form_for @wiki do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title, class: 'create_body' %>
+   <div class="create">
+       <%= f.label :body %>
+       <%= f.text_area :body, class: 'create_body', id: 'wiki_content' %>
+   </div>
+   <div class="create">
+       <label>Preview</label>
+       <textarea class="create_body" id="wiki_preview" readonly></textarea>
+   </div>
+   <%= f.submit "Save", class: 'btn_create' %>
+ <% end %>
+ </div>

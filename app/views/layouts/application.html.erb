@@ -9,7 +9,26 @@
 <body>
   <header>
     <h1>BLOCIPEDIA</h1>
+    <!--<img src="assets/images/mytree.png"/>-->
   </header>
+  <div class="navigation">
+    <ul>
+      <li><%= link_to "Home", root_path, class: 'btn1' %></li>
+      <li><%= link_to "My Wikis", wikis_path, class: 'btn1' %></li>
+      <li><%= link_to "Create", new_wiki_path, class: 'btn1' %></li>
+      <li><%= link_to "Community", '#', class: 'btn1' %></li>
+      <li><%= link_to "About", about_path, class: 'btn1' %></li>
+      <% if user_signed_in? %>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn1' ) %>        
+        </li>
+      <% else %>
+        <li>
+        <%= link_to('Login', new_user_session_path, class: 'btn1' )  %>  
+        </li>
+      <% end %>
+    </ul>
+  </div>
   
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
