@@ -3,6 +3,7 @@ require 'faker'
 
 25.times do
     User.create!(
+      username: Faker::Name.name,
       email: Faker::Internet.unique.email,
       password: Faker::Internet.unique.password
 )
@@ -13,6 +14,7 @@ users = User.all
 100.times do
     Wiki.create!(
       user: users.sample,
+      private: false,
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.paragraph
 )

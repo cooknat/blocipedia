@@ -3,10 +3,15 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
+  
+  <div class="field access-element">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autofocus: true, class: 'access-field' %>
+  </div>
 
   <div class="field access-element">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'access-field' %>
+    <%= f.email_field :email, class: 'access-field' %>
   </div>
 
   <div class="field access-element">

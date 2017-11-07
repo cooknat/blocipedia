@@ -27,6 +27,19 @@
         <%= link_to('Login', new_user_session_path, class: 'btn1' )  %>  
         </li>
       <% end %>
+      <% if current_user && current_user.role == "standard" %>
+        <li>
+        <%= link_to('Upgrade Account', new_charge_path, class: 'btn1' ) %>        
+        </li>
+      <% elsif current_user %>
+        <li>
+          <%= link_to('Downgrade Account', new_charge_path, class: 'btn1' )  %>  
+        </li>
+        <% else %>
+        <li>
+          <%= link_to('Sign up!', new_user_registration_path, class: 'btn1' )  %>
+        </li>
+        <% end %>
     </ul>
   </div>
   
