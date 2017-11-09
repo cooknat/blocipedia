@@ -1,4 +1,13 @@
  <%= form_tag charges_path do %>
-   <h4>Click the button!</h4>
-   <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+   <% if current_user.role == 'standard' %>
+     <h3>Click the button below to upgrade your account and enjoy all the benefits of premium membership, for only $15!</h3>
+     <script class='stripe-button' src="https://checkout.stripe.com/checkout.js"
+                                   data-key="<%= @stripe_btn_data[:key] %>" 
+                                   data-amount="<%= @stripe_btn_data[:amount] %>" 
+                                   data-description="<%= @stripe_btn_data[:description] %>" >
+     </script>
+   <% else %>
+   <h3>Are you sure you want to downgrade to standard membership? Please note that if you continue, your private Wikis will be set to public. Your registration fee will be refunded, minus an admin charge of $3.</h3>
+     <%= link_to "Confirm downgrade", @charge, method: :delete, class: 'btn1', data: { confirm: 'Are you sure you want to downgrade?' } %>
+   <% end %>
  <% end %>

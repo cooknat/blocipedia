@@ -1,4 +1,10 @@
 <h1>Recent Wikis</h1>
 <% @wikis.each do |wiki| %>
+  <% if wiki.private %>
+    <% if wiki.user == current_user %>
+      <p><%= link_to wiki.title, wiki, class: 'private_wiki' %></p>
+    <% end %>      
+  <% else %>
    <p><%= link_to wiki.title, wiki %></p>
+  <% end %>      
  <% end %>

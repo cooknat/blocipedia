@@ -37,7 +37,9 @@ header img {
     display: inline;
 }
 
-
+.private_wiki{
+    font-weight: bold; 
+}
 
 .access {
     border: 1px solid black;
@@ -106,9 +108,10 @@ header img {
   letter-spacing: 2px;
   font-size: 10px;
   margin: 5px 0 10px 10px;
-  
     
 }
+
+
 
 
 .btn1 {

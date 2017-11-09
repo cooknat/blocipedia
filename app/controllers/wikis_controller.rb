@@ -20,6 +20,12 @@ class WikisController < ApplicationController
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
      
+     if(current_user)
+       @wiki.private = params[:wiki][:private]
+     else
+       @wiki.private = false
+     end  
+     
      authorize @wiki
  
      if @wiki.save
@@ -35,10 +41,21 @@ class WikisController < ApplicationController
      @wiki = Wiki.new
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
+     @wiki.user = current_user
+     
+     if(current_user.role == 'premium')
+       @wiki.private = params[:wiki][:private]
+     else
+       @wiki.private = false
+     end  
 
      if @wiki.save
-       flash[:notice] = "Wiki was saved."
-       redirect_to @wiki
+         if @wiki.private
+           flash[:notice] = "Private Wiki was saved. Only you can view this Wiki."
+         else
+           flash[:notice] = "Wiki was saved."
+         end     
+           redirect_to @wiki
      else
        flash.now[:alert] = "There was an error saving the wiki. Please try again."
        render :new

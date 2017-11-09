@@ -10,6 +10,12 @@
        <label>Preview</label>
        <textarea class="create_body" id="wiki_preview" readonly></textarea>
    </div>
+   <% if current_user.role == 'premium' %>
+     <div class="create">
+         <%= f.label :private %>
+         <%= f.check_box :private %>
+     </div>
+   <% end %> 
    <%= f.submit "Save", class: 'btn_create' %>
  <% end %>
  </div>
