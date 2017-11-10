@@ -1,5 +1,5 @@
  <h1><%= @wiki.title %></h1>
- <p><%= @wiki.body %></p>
+ <p><%= markdown(@wiki.body) %></p>
  
  
  <%= link_to "Edit this wiki", edit_wiki_path(@wiki), class: 'btn1' %>
