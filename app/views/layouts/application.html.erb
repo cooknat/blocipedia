@@ -9,38 +9,46 @@
 <body>
   <header>
     <h1>BLOCIPEDIA</h1>
-    <!--<img src="assets/images/mytree.png"/>-->
+    <img src="https://image.ibb.co/dgra8R/bulb.png">
   </header>
   <div class="navigation">
-    <ul>
-      <li><%= link_to "Home", root_path, class: 'btn1' %></li>
-      <li><%= link_to "My Wikis", wikis_path, class: 'btn1' %></li>
-      <li><%= link_to "Create", new_wiki_path, class: 'btn1' %></li>
-      <li><%= link_to "Community", '#', class: 'btn1' %></li>
-      <li><%= link_to "About", about_path, class: 'btn1' %></li>
+    <div class="user_details">
       <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn1' ) %>        
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path, class: 'btn1' )  %>  
-        </li>
+        <p>Signed in as: <strong><%= current_user.username %></strong></p>
       <% end %>
-      <% if current_user && current_user.role == "standard" %>
-        <li>
-        <%= link_to('Upgrade Account', new_charge_path, class: 'btn1' ) %>        
-        </li>
-      <% elsif current_user %>
-        <li>
-          <%= link_to('Downgrade Account', new_charge_path, class: 'btn1' )  %>  
-        </li>
+    </div>
+    <div class="buttons">
+      <ul>
+        <li><%= link_to "Home", root_path, class: 'btn1' %></li>
+        <li><%= link_to "My Wikis", wikis_path, class: 'btn1' %></li>
+        <li><%= link_to "Create", new_wiki_path, class: 'btn1' %></li>
+        <li><%= link_to "Community", '#', class: 'btn1' %></li>
+        <li><%= link_to "About", about_path, class: 'btn1' %></li>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to 'Edit profile', edit_user_registration_path, class: 'btn1' %>
+          <%= link_to('Logout', destroy_user_session_path, method: :delete, class: 'btn1' ) %>        
+          </li>
         <% else %>
-        <li>
-          <%= link_to('Sign up!', new_user_registration_path, class: 'btn1' )  %>
-        </li>
+          <li>
+          <%= link_to('Login', new_user_session_path, class: 'btn1' )  %>  
+          </li>
         <% end %>
-    </ul>
+        <% if current_user && current_user.role == "standard" %>
+          <li>
+          <%= link_to('Upgrade Account', new_charge_path, class: 'btn1' ) %>        
+          </li>
+        <% elsif current_user %>
+          <li>
+            <%= link_to('Downgrade Account', new_charge_path, class: 'btn1' )  %>  
+          </li>
+          <% else %>
+          <li>
+            <%= link_to('Sign up!', new_user_registration_path, class: 'btn1' )  %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
   </div>
   
 <p class="notice"><%= notice %></p>

@@ -9,7 +9,7 @@
    <%= link_to 'Add Collaborators', new_collaborator_path(wiki_title: @wiki.title), class: 'btn1' %>
  <% end %> 
    
- <% if @wiki.collaborators %>
+ <% if @wiki.collaborators && @wiki.user == current_user %>
    <p>These are the collaborators on this wiki:</p>
    <% collabs = @wiki.collaborators %>
      <% collabs.each do |c| %>

@@ -13,27 +13,38 @@ header{
 header h1 {
     margin-top: 0;
     margin-bottom: 0;
+    display: inline;
 }
 
 header img {
-    text-align: right;
-    height: 40px;
+    display: inline;
+    float: right;
+    height: 100px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 0;
 }
-
 .navigation{
     width: 100%;
-    
 }
 
+.user_details{
+    float: left;
+    width: 29%;
+}
 
-.navigation ul{
+.buttons{
+    float: left;
+    width: 70%;
+}
+
+.buttons ul{
     list-style-type: none; 
     text-align: right;
     margin-bottom: 60px;
-    
 }
 
-.navigation ul li{
+.buttons ul li{
     display: inline;
 }
 

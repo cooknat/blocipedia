@@ -1,5 +1,5 @@
 class CollaboratorsController < ApplicationController
-  before_action :validate, only: [:create]
+  before_action :user_exists, :duplicate, only: [:create]
   def new
     @collaborator = Collaborator.new
   end
@@ -30,14 +30,22 @@ class CollaboratorsController < ApplicationController
      end
   end
   
-    
-  
   private
   # must be a better way of doing this?
-  def validate
+  def user_exists
     unless User.where(username: params[:collaborator][:user]).first 
      flash[:alert] = "This user does not exist. Please check your spelling and try again."
      redirect_to wiki_path(Wiki.where(title: params[:title]).first)
     end  
   end
+  
+  def duplicate
+    u = User.where(username: params[:collaborator][:user]).first
+    w = Wiki.where(title: params[:title]).first
+    
+    if Collaborator.where(user: u, wiki: w).first 
+     flash[:alert] = "This user is already a collaborator on this wiki."
+     redirect_to wiki_path(w)
+    end
+  end 
 end
