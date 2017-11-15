@@ -28,15 +28,17 @@ header img {
     width: 100%;
 }
 
+.buttons{
+    float: left;
+    width: 70%;
+}
+
 .user_details{
     float: left;
     width: 29%;
 }
 
-.buttons{
-    float: left;
-    width: 70%;
-}
+
 
 .buttons ul{
     list-style-type: none; 
