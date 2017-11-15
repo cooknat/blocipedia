@@ -6,6 +6,7 @@ require 'faker'
       username: Faker::Name.name,
       email: Faker::Internet.unique.email,
       password: Faker::Internet.unique.password
+      confirmed_at: Time.now
 )
 end
 users = User.all
