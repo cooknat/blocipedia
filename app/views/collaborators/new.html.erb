@@ -1,0 +1,16 @@
+<h1>Add a collaborator to your private Wiki</h1>
+<div class="wiki_create">
+ <%= form_for @collaborator do |f| %>
+ <div>
+   <%= f.label :wiki_id %>
+   <% wikititle = params[:wiki_title] %>
+   <%= f.label wikititle %>
+   <%= hidden_field_tag 'title', wikititle %>
+  </div>
+  <div>
+    <%= f.label :user %>
+    <%= f.text_field :user, class: 'text_collab' %>
+  </div>
+   <%= f.submit "Save", class: 'btn_small' %>
+ <% end %>
+ </div>

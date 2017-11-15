@@ -4,3 +4,17 @@
  
  <%= link_to "Edit this wiki", edit_wiki_path(@wiki), class: 'btn1' %>
  <%= link_to "Delete this wiki", @wiki, method: :delete, class: 'btn1', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
+ 
+ <% if current_user.role == 'premium' && @wiki.private %>
+   <%= link_to 'Add Collaborators', new_collaborator_path(wiki_title: @wiki.title), class: 'btn1' %>
+ <% end %> 
+   
+ <p>These are the collaborators on this wiki:</p>
+   <% if @wiki.hasCollaborators %>
+   <% collabs = @wiki.getCollaborators %>
+     <% collabs.each do |c| %>
+      <li><%= u = User.where(id: c.user_id).first.username %>
+      <%= link_to 'Remove Collaborator', collaborator_path(c.id, wiki: @wiki), method: :delete, data: {confirm: 'Are you sure you want to remove this collaborator?'} %></li>
+     <% end%>
+   <% end %>
+  

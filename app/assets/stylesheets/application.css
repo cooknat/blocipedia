@@ -131,3 +131,15 @@ header img {
   color: black;
   text-decoration: none;
 }
+
+.btn_small {
+  border: 1px solid;
+  background-color: white;
+  padding: 5px;
+  width: 100px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 10px;
+  margin: 5px 0 10px 0;
+  
+}
