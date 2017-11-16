@@ -113,15 +113,15 @@ header img {
     width: 44%;
     
 }
-.preview{
+.preview {
     display: inline-block;
     width: 44%;
-    font-size: 10px;
 }
 
 #sourceTA {
     display: block;
     height: 350px;
+    
 }
 #targetDiv {
   border: 1px dashed #333333;
@@ -129,6 +129,8 @@ header img {
   height: 350px;
   font-family: Helvetica;
   font-size: 12px;
+  text-transform: none;
+  letter-spacing: 1px;
 }
 
 .btn_create{

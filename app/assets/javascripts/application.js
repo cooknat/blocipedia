@@ -21,6 +21,5 @@ function run() {
       target = document.getElementById('targetDiv'),
       converter = new showdown.Converter(),
       html = converter.makeHtml(text);
-    
-    target.innerHTML = html;
+      target.innerHTML = html;
 }
