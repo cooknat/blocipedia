@@ -113,16 +113,22 @@ header img {
     width: 44%;
     
 }
-
-
-#wiki_content{
-    height: 300px;
-   
+.preview{
+    display: inline-block;
+    width: 44%;
+    font-size: 10px;
 }
 
-#wiki_preview{
-    height: 300px;
-      
+#sourceTA {
+    display: block;
+    height: 350px;
+}
+#targetDiv {
+  border: 1px dashed #333333;
+  width: 475px;
+  height: 350px;
+  font-family: Helvetica;
+  font-size: 12px;
 }
 
 .btn_create{
@@ -180,5 +186,5 @@ header img {
     position: absolute;
     top: 195px;
     right: 15px;
-
 }
+

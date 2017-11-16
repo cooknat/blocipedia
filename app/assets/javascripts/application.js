@@ -14,4 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.2/showdown.min.js"></script>
+
+
+function run() {
+  var text = document.getElementById('sourceTA').value,
+      target = document.getElementById('targetDiv'),
+      converter = new showdown.Converter(),
+      html = converter.makeHtml(text);
+    
+    target.innerHTML = html;
+}
