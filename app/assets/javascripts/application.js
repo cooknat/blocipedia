@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.8.2/showdown.min.js"></script>

@@ -63,8 +63,7 @@ class ChargesController < ApplicationController
      end
    end    
           
-   current_user.role = 'standard'
-   current_user.save!
+   current_user.standard!
    
    rescue Stripe::CardError => e
      flash[:alert] = e.message

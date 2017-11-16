@@ -26,24 +26,36 @@ header img {
 }
 .navigation{
     width: 100%;
-}
+    margin 0;
+    padding 0;
+}    
 
 .buttons{
-    float: left;
-    width: 70%;
+   position: absolute;
+   top: 145px;
+   left: -20px;
+  
 }
 
 .user_details{
-    float: left;
-    width: 29%;
+    position: absolute;
+    top: 145px;
+    right: 15px;
 }
 
+.content{
+    width: 100%;
+    position: absolute;
+    top: 190px;
+    left: 10px;
+    
 
+}
 
 .buttons ul{
     list-style-type: none; 
-    text-align: right;
-    margin-bottom: 60px;
+   
+    
 }
 
 .buttons ul li{
@@ -155,4 +167,17 @@ header img {
   font-size: 10px;
   margin: 5px 0 10px 0;
   
+}
+
+.notice{
+    position: absolute;
+    top: 195px;
+    right: 15px;
+}
+
+.alert{
+    position: absolute;
+    top: 195px;
+    right: 15px;
+
 }

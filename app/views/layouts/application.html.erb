@@ -12,17 +12,11 @@
     <img src="https://image.ibb.co/dgra8R/bulb.png">
   </header>
   <div class="navigation">
-    <div class="user_details">
-      <% if user_signed_in? %>
-        <p>Signed in as: <strong><%= current_user.username %></strong></p>
-      <% end %>
-    </div>
     <div class="buttons">
       <ul>
         <li><%= link_to "Home", root_path, class: 'btn1' %></li>
         <li><%= link_to "My Wikis", wikis_path, class: 'btn1' %></li>
         <li><%= link_to "Create", new_wiki_path, class: 'btn1' %></li>
-        <li><%= link_to "Community", '#', class: 'btn1' %></li>
         <li><%= link_to "About", about_path, class: 'btn1' %></li>
         <% if user_signed_in? %>
           <li>
@@ -49,11 +43,17 @@
           <% end %>
       </ul>
     </div>
+      <div class="user_details">
+      <% if user_signed_in? %>
+        <p>Signed in as: <strong><%= current_user.username %></strong></p>
+      <% end %>
+    </div>
   </div>
   
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-<%= yield %>
-
+<div class="content">
+  <%= yield %>
+</div>
 </body>
 </html>

@@ -20,12 +20,6 @@ class WikisController < ApplicationController
      @wiki.title = params[:wiki][:title]
      @wiki.body = params[:wiki][:body]
      
-     if(current_user)
-       @wiki.private = params[:wiki][:private]
-     else
-       @wiki.private = false
-     end  
-     
      authorize @wiki
  
      if @wiki.save
