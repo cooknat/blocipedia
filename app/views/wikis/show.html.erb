@@ -13,10 +13,12 @@
     <% if @wiki.collaborators.length > 0 && @wiki.user == current_user %>
       <p>These are the collaborators on this wiki:</p>
       <% collabs = @wiki.collaborators %>
+       <ul>
         <% collabs.each do |c| %>
          <li><%= User.where(id: c.user_id).first.username %>
          <%= link_to 'Remove Collaborator', collaborator_path(c.id, wiki: @wiki), method: :delete, data: {confirm: 'Are you sure you want to remove this collaborator?'} %></li>
        <% end%>
+       </ul>
      <% end %>
    </div> 
  </div>

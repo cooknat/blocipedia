@@ -48,22 +48,24 @@ header img {
     position: absolute;
     top: 190px;
     left: 10px;
-    
+}
 
+.collaborators{
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.collaborators ul{
+    list-style-type: none; 
+    margin-left: -30px;
 }
 
 .buttons ul{
     list-style-type: none; 
-   
-    
 }
 
 .buttons ul li{
     display: inline;
-}
-
-.private_wiki{
-    font-weight: bold; 
 }
 
 .access {
@@ -94,7 +96,6 @@ header img {
 .wiki_create {
     padding: 20px;
     width: 100%;
-   
     margin: 0 15px 0 0;
     text-transform: uppercase;
     letter-spacing: 2px;
