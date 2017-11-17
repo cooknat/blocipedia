@@ -1,18 +1,18 @@
 <div class="wiki_create">
-     <h1>Edit Wiki</h1>
-     <%= form_for @wiki do |f| %>
-         <%= f.label :title %>
-         <%= f.text_field :title, class: 'create_body', placeholder: "Enter wiki title" %>
-       <div class="create">
-         <%= f.label :body %>
-         <%= f.text_area :body, class: 'create_body', placeholder: "Enter wiki body", id: 'wiki_content' %>
-       </div>
-        <div class="create">
-           <label>Preview</label>
-           <textarea class="create_body" id="wiki_preview" readonly></textarea>
-        </div>
-        <%= f.submit "Save", class: 'btn_create' %>
-     <% end %>
+  <%= form_for @wiki do |f| %>
+   <%= f.label :title %>
+   <%= f.text_field :title, class: 'create_body' %>
+   <div class="create">
+       <%= f.label :body %>
+       <%= f.text_area :body, class: 'create_body', id: 'wiki_body' %>
    </div>
- </div>
+   <%= f.submit "Save", class: 'btn_create' %>
+ <% end %>
 </div>
+<div class="preview">
+   <label>Preview</label>
+   <div id="markdown_preview"></div>
+</div>
+<script type="text/javascript">
+   showExisting();
+</script>

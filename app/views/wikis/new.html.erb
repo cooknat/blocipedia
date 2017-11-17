@@ -4,14 +4,10 @@
    <%= f.text_field :title, class: 'create_body' %>
    <div class="create">
        <%= f.label :body %>
-       <%= f.text_area :body, class: 'create_body' %>
-   </div>
-    <div class="preview">
-       <label>Preview</label>
-       <div id="markdown_preview"></div>
+       <%= f.text_area :body, class: 'create_body', id: 'wiki_body' %>
    </div>
    <% if current_user.role == 'premium' %>
-     <div class="create">
+     <div>
          <%= f.label :private %>
          <%= f.check_box :private %>
      </div>
@@ -19,4 +15,7 @@
    <%= f.submit "Save", class: 'btn_create' %>
  <% end %>
  </div>
- 
+ <div class="preview">
+   <label>Preview</label>
+   <div id="markdown_preview"></div>
+ </div>
