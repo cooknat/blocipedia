@@ -16,10 +16,11 @@
 //= require_tree .
 
 
-function run() {
-  var text = document.getElementById('sourceTA').value,
-      target = document.getElementById('targetDiv'),
-      converter = new showdown.Converter(),
-      html = converter.makeHtml(text);
-      target.innerHTML = html;
-}
+$(document).on('turbolinks:load', function() {
+  var converter = new showdown.Converter();
+  $('#wiki_body').keyup(function() {
+    var mdown = $(this).val();
+    var html = converter.makeHtml(mdown);
+    $('#markdown_preview').html(html);
+  })
+})
