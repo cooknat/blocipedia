@@ -1,7 +1,5 @@
 class ChargesController < ApplicationController
   
-  after_action :change_role, only: [:create]
-  
   class Amount
     def self.default
       @amount = 15_00
@@ -33,11 +31,12 @@ class ChargesController < ApplicationController
      currency: 'usd'
    )
    
-   current_user.charge_id = charge.id
-   current_user.save!
- 
-   flash[:notice] = "Thanks for all the money, #{current_user.username}! Feel free to pay me again."
-   redirect_to wikis_path 
+  if charge.paid
+     current_user.update(charge_id: charge.id, role: :premium)
+
+     flash[:notice] = "Thanks for all the money, #{current_user.username}! Feel free to pay me again."
+     redirect_to wikis_path
+  end
    
    rescue Stripe::CardError => e
      flash[:alert] = e.message
@@ -56,28 +55,11 @@ class ChargesController < ApplicationController
    redirect_to wikis_path 
    
    #publicise all the private wikis
-   Wiki.all.each do |w|
-     if w.user_id == current_user.id && w.private
-       w.private = false
-       w.save!
-     end
-   end    
+   current_user.wikis.update_all(private: false)
+   current_user.standard!    
           
-   current_user.standard!
-   
    rescue Stripe::CardError => e
      flash[:alert] = e.message
      redirect_to new_charge_path
-     
-    
   end
-  
-  private
-  
-  def change_role
-    current_user.role = :premium
-    current_user.save
-  end  
-    
-    
 end

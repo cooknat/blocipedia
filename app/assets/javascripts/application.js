@@ -28,7 +28,6 @@ $(document).on('turbolinks:load', function() {
 var showExisting = function(){
   var converter = new showdown.Converter();
   var mdown = $('#wiki_body').val();
-  console.log($('#wiki_body').html());
   var html = converter.makeHtml(mdown);
     $('#markdown_preview').html(html);
 };

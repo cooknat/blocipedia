@@ -6,20 +6,17 @@
    <%= link_to "Edit this wiki", edit_wiki_path(@wiki), class: 'btn1' %>
    <%= link_to "Delete this wiki", @wiki, method: :delete, class: 'btn1', data: {confirm: 'Are you sure you want to delete this wiki?'} %>
    
-   <% if current_user.premium? && @wiki.private %>
-     <%= link_to 'Add Collaborators', new_collaborator_path(wiki_title: @wiki.title), class: 'btn1' %>
-   <% end %> 
-   <div class="collaborators"> 
-    <% if @wiki.collaborators.length > 0 && @wiki.user == current_user %>
-      <p>These are the collaborators on this wiki:</p>
-      <% collabs = @wiki.collaborators %>
-       <ul>
-        <% collabs.each do |c| %>
-         <li><%= User.where(id: c.user_id).first.username %>
-         <%= link_to 'Remove Collaborator', collaborator_path(c.id, wiki: @wiki), method: :delete, data: {confirm: 'Are you sure you want to remove this collaborator?'} %></li>
-       <% end%>
-       </ul>
-     <% end %>
+  <% if @wiki.user == current_user && @wiki.private? %>
+    <%= link_to 'Add Collaborators', new_collaborator_path(wiki_title: @wiki.title), class: 'btn1' %>
+  <% end %>
+  
+  <% if policy(@wiki).manage_collaborators? %>
+    <p>These are the collaborators on this wiki:</p>
+    <% @collabs.each do |c| %>
+      <li><%= c.username %>
+      <%= link_to 'Remove Collaborator', collaborator_path(c.id, wiki: @wiki), method: :delete, data: {confirm: 'Are you sure you want to remove this collaborator?'} %></li>
+    <% end%>
+  <% end %>
    </div> 
  </div>
   

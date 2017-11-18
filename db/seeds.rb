@@ -5,7 +5,7 @@ require 'faker'
     User.create!(
       username: Faker::Name.name,
       email: Faker::Internet.unique.email,
-      password: Faker::Internet.unique.password
+      password: Faker::Internet.unique.password,
       confirmed_at: Time.now
 )
 end
